@@ -1,0 +1,39 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body{
+  height: 100vh;
+  margin: 0;
+  background: #4D4E69;
+  overflow: hidden;
+  font-family: monospace;
+  @media (max-height: 260px), (max-width: 450px) {
+    &:after, &:before{
+      content: '';
+      position: absolute;
+    }
+    &:after{
+      z-index: 100;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background: #4D4E69;
+    }
+    &:before{
+      z-index: 101;
+      content: "This crap ain't optimized for this small of a screen!";
+      width: 100%;
+      padding: 0 15%;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      text-align: center;
+    }
+  }
+}
+
+@import "poly-scene";
+@import "crosshair";
+@import "legend";

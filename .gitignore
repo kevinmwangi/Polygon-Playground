@@ -1,0 +1,29 @@
+# Frontend
+.sass-cache/
+node_modules/
+.bundle/
+npm-debug.log
+
+.idea/*
+bower_components/
+
+# OSX
+.DS_Store
+logs
+
+# SERVER
+error_log
+hooks/
+info/
+info
+description
+HEAD
+readme.html
+cgi-bin/
+branches/
+staging/
+
+# Design
+*.sketch
+
+.vagrant

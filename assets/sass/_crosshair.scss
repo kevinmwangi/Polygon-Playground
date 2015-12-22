@@ -1,0 +1,31 @@
+.crosshair, .crosshair:before, .crosshair:after{
+  position: absolute;
+}
+
+.crosshair{
+  z-index: 12;
+  width: 1px;
+  height: 1px;
+  margin: -6px;
+  background: white;
+  transform: scale(1);
+  transition: opacity .1s ease, transform .1s ease;
+  &:before, &:after{
+    content: '';
+    background: #787A9E;
+    transition: background .1s ease;
+  }
+  &.active:before, &.active:after{
+    background: white;
+  }
+  &:after{
+    width: 1px;
+    height: 15px;
+    margin: -7px 0px 0;
+  }
+  &:before{
+    width: 15px;
+    height: 1px;
+    margin: 0px -7px 0;
+  }
+}
