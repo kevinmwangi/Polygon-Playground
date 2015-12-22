@@ -5,6 +5,7 @@ var fuck ="whit";
 (function () {
   var clicks = 0, polyCss = '', css = '';
   var polyArry = new Object();
+  var clipboard = new Clipboard('.copycss');
 
   var App = {
     elements: {
@@ -14,6 +15,7 @@ var fuck ="whit";
       pointsAmount: document.querySelector('.counter .amount'),
       clicksAmount: document.querySelector('.counter .clicks'),
       clear: document.querySelector('.clear'),
+      copyCss: document.querySelector('.copycss'),
       crosshair: document.createElement('div')
     },
     init : function() {
@@ -32,6 +34,15 @@ var fuck ="whit";
         App.elements['pointsAmount'].innerHTML = this.value;
         clicks = 0, polyCss = '';
       });
+
+      // copy clipboard
+      App.utls.on(App.elements['copyCss'], 'click', function(e) {
+        this.textContent = "Copied!";
+        setTimeout(function() {
+          App.elements['copyCss'].textContent = "Copy css to Clipboard";
+        }, 800);
+      });
+
       App.utls.on(App.elements['polyContainer'], 'click', function(e) {
         var mouseX = e.pageX,  mouseY = e.pageY;
 
@@ -45,8 +56,6 @@ var fuck ="whit";
         percentX = shapeX / polyWidth,
         percentY = shapeY / polyHeight;
 
-        console.log(percentX);
-
         var normalisedX = parseFixed2(percentX),
         normalisedY = parseFixed2(percentY);
 
@@ -56,13 +65,11 @@ var fuck ="whit";
 
         var points =  parseFloat(App.elements['number'].value);
         clicks += 1;
-        console.log(clicks);
         /*
         * Reset clicks / stored polygon CSS
         * Remove all points from scene
         */
         if (clicks > points) {
-          console.log('reset clicks');
           clicks = 1, polyCss = '';
         }
 
@@ -80,7 +87,6 @@ var fuck ="whit";
       * get First click values
       * Show how many clicks have been made
       */
-      console.log(clicks);
       if (clicks < points) {
 
         polyCss = polyCss + normalisedX + '% ' + normalisedY + '%, ';
@@ -190,6 +196,10 @@ var fuck ="whit";
         style.appendChild(document.createTextNode(css));
       }
       head.appendChild(style);
+      App.elements['copyCss'].setAttribute('data-clipboard-text', css);
+      if (!classie.has(App.elements['copyCss'], 'active')) {
+        classie.add(App.elements['copyCss'], 'active')
+      };
     }
   };
 

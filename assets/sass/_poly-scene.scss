@@ -1,8 +1,6 @@
-.clear{
+.button{
   position: absolute;
   z-index: 20;
-  top: 10px;
-  right: 10px;
   background: #353547;
   border: none;
   color: white;
@@ -10,6 +8,18 @@
   font-family: monospace;
   outline: none;
   cursor: pointer;
+  &.copycss{
+    top: 10px;
+    right: 10px;
+  }
+}
+
+.copycss{
+  transform: translateY(-150%);
+  transition: .3s ease;
+  &.active{
+    transform: translateY(0%);
+  }
 }
 
 .scene{
