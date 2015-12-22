@@ -1,7 +1,5 @@
 'use strict';
 
-var fuck ="whit";
-
 (function () {
   var clicks = 0, polyCss = '', css = '';
   var polyArry = new Object();
